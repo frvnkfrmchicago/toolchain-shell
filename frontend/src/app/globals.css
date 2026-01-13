@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  
+  --color-card: var(--color-card);
+  --color-card-foreground: var(--color-card-foreground);
+
+  --color-border: var(--color-border);
+  
+  --animate-pulse-fast: pulse-fast 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  @keyframes pulse-fast {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+}
+
+/*
+  TOOLCHAIN PREMIUM THEME v2
+  Philosophy: Warm Luxury, Premium Feel, Award-Worthy Design
+*/
+:root {
+  /* Core Background - Deep Navy */
+  --void-bg: #0A0A12;
+  --void-card: #111118;
+  --void-border: #1F1F2E;
+  --rich-navy: #1E1B4B;
+
+  /* Primary - Warm Amber Spectrum */
+  --amber-gold: #F59E0B;
+  --amber-light: #FBBF24;
+  --cream-rose: #FDE68A;
+  
+  /* Secondary - Deep Plum Spectrum */
+  --deep-plum: #7C3AED;
+  --plum-light: #A78BFA;
+  --plum-dark: #5B21B6;
+
+  /* Legacy Colors (keeping for backward compat) */
+  --neon-cyan: #00D9FF;
+  --electric-blue: #0A7AFF;
+  --ice-blue: #B8E6FF;
+  
+  /* Accent - Success/Info */
+  --amber: #FFB84D;
+  --success-green: #00E676;
+
+  /* Base */
+  --neon-white: #FFFFFF;
+
+  /* Semantic Map - NEW Premium Colors */
+  --color-background: var(--void-bg);
+  --color-foreground: var(--neon-white);
+
+  --color-primary: var(--amber-gold);
+  --color-primary-foreground: var(--void-bg);
+  
+  --color-secondary: var(--deep-plum);
+  --color-secondary-foreground: var(--neon-white);
+
+  --color-card: var(--void-card);
+  --color-card-foreground: var(--neon-white);
+
+  --color-border: var(--void-border);
+
+  --radius: 0.5rem;
+
+  /* Typography */
+  --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Void Utilities */
+@utility void-card {
+  background-color: var(--void-card);
+  border: 1px solid var(--void-border);
+  transition: all 0.2s ease-out;
+  
+  &:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+  }
+}
+
+@utility spotlight-border {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: radial-gradient(
+      800px circle at var(--mouse-x) var(--mouse-y),
+      rgba(0, 240, 255, 0.4),
+      transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: -1;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Selection */
+::selection {
+  background: var(--neon-cyan);
+  color: black;
+}
+
+/* AI Response Prose Styling */
+.prose-ai-response {
+  @apply prose prose-invert prose-sm max-w-none;
+  @apply prose-headings:text-white prose-headings:font-semibold prose-headings:mb-3;
+  @apply prose-h2:text-lg prose-h2:mt-6 prose-h2:mb-3 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-2;
+  @apply prose-h3:text-base prose-h3:mt-4 prose-h3:mb-2;
+  @apply prose-p:text-white/80 prose-p:leading-relaxed prose-p:mb-4;
+  @apply prose-strong:text-white prose-strong:font-medium;
+  @apply prose-code:text-cyan-400 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm;
+  @apply prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10 prose-pre:p-4 prose-pre:rounded-lg prose-pre:my-4;
+  @apply prose-ul:my-3 prose-ul:text-white/80 prose-ul:space-y-1;
+  @apply prose-li:text-white/80 prose-li:leading-relaxed;
+  @apply prose-a:text-cyan-400 prose-a:underline hover:prose-a:text-cyan-300;
+}
+
+/* Space Theme Animations */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-30px) translateX(20px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(20px) translateX(-30px); }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 20s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 25s ease-in-out infinite;
+}
+
+.animate-orbit {
+  animation: orbit 30s linear infinite;
+}
