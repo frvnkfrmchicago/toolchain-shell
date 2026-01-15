@@ -206,7 +206,7 @@ export function AskDemo() {
             </div>
 
             {/* Terminal Body */}
-            <div className="bg-black/90 backdrop-blur-xl border border-white/5 border-t-0 rounded-b-lg p-6 font-mono text-sm h-[420px] flex flex-col shadow-2xl relative overflow-hidden">
+            <div className="bg-black/90 backdrop-blur-xl border border-white/5 border-t-0 rounded-b-lg p-4 md:p-6 font-mono text-sm min-h-[280px] md:min-h-[420px] flex flex-col shadow-2xl relative overflow-hidden">
                 {/* Subtle grid pattern */}
                 <div className="absolute inset-0 opacity-5" style={{
                   backgroundImage: 'linear-gradient(to right, #F59E0B 1px, transparent 1px), linear-gradient(to bottom, #F59E0B 1px, transparent 1px)',
